@@ -2,10 +2,15 @@
 #include <ATen/cuda/CUDAContext.h>
 #include <vector>
 #include <THC/THC.h>
+#include <torch/script.h>
 
 #include "sampling_gpu.h"
 
+
 extern THCState *state;
+
+static auto registry =
+  torch::RegisterOperators("pointnet2_ts::furthest_point_sampling_wrapper", &furthest_point_sampling_wrapper);
 
 
 int gather_points_wrapper_fast(int b, int c, int n, int npoints, 
