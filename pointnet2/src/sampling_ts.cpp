@@ -13,7 +13,7 @@ static auto registry =
   torch::RegisterOperators("pointnet2_ts::furthest_point_sampling_wrapper", &furthest_point_sampling_wrapper);
 
 
-int furthest_point_sampling_wrapper(int64_t b, int64_t n, int64_t m, 
+int64_t furthest_point_sampling_wrapper(int64_t b, int64_t n, int64_t m, 
     at::Tensor points_tensor, at::Tensor temp_tensor, at::Tensor idx_tensor) {
 
     const double *points = points_tensor.data<double>();
