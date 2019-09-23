@@ -6,7 +6,7 @@
 #include<vector>
 
 
-void furthest_point_sampling_kernel_launcher(int_64 b, int_64 n, int_64 m, 
+void furthest_point_sampling_kernel_launcher(int64_t b, int64_t n, int64_t m, 
     const double *dataset, double *temp, int_64 *idxs, cudaStream_t stream);
 
 #endif
