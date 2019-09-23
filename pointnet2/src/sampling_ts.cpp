@@ -9,10 +9,6 @@
 
 extern THCState *state;
 
-static auto registry =
-  torch::RegisterOperators("pointnet2_ts::furthest_point_sampling_wrapper", &furthest_point_sampling_wrapper);
-
-
 int64_t furthest_point_sampling_wrapper(int64_t b, int64_t n, int64_t m, 
     at::Tensor points_tensor, at::Tensor temp_tensor, at::Tensor idx_tensor) {
 
@@ -24,3 +20,6 @@ int64_t furthest_point_sampling_wrapper(int64_t b, int64_t n, int64_t m,
     furthest_point_sampling_kernel_launcher(b, n, m, points, temp, idx, stream);
     return 1;
 }
+
+static auto registry =
+  torch::RegisterOperators("pointnet2_ts::furthest_point_sampling_wrapper", &furthest_point_sampling_wrapper);
